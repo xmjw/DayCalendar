@@ -15,10 +15,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: DayCalendar_development
+  database: daycalendar_dev
   pool: 5
-  username: DayCalendar
-  password:
+  username: daycalendar
+  password: daycalendar
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -41,15 +41,18 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: DayCalendar_test
+  database: daycalendar_test
   pool: 5
-  username: DayCalendar
-  password:
+  username: daycalendar
+  password: daycalendar
+
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: DayCalendar_production
+  database: daycalendar_production
   pool: 5
-  username: DayCalendar
-  password:
+  username: caycalendar
+  password: daycalendar
+
+
