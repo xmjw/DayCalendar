@@ -54,6 +54,14 @@ $(document).on('mouseup', '.slot', ( (e)->
 
   xicon.onclick = (() -> $("#"+lozenge.id).fadeOut('slow', () -> $("#"+lozenge.id).remove()); )
 
+  project = document.createElement('input')
+  project.id = lozenge.id+"-p";
+
+  task = document.createElement('input')
+  task.id = lozenge.id+"-t";
+
+  lozenge.appendChild(project);
+  lozenge.appendChild(task);
 
   $('#calendar').append(lozenge);
 ));
