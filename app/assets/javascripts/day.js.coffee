@@ -35,7 +35,7 @@ $(document).on('mouseup', '.slot', ( (e)->
   console.log("Trying to create a box with start position (x/y) "+$('#xStart').val()+"x"+$('#yStart').val())
 
   lozenge = document.createElement('div');
-  lozenge.id = 'timepsan';
+  lozenge.id = h+"-"+w+"-"+$('#xStart').val()+"-"+$('#yStart').val();
   lozenge.style.height = h+"px";
   lozenge.style.width = w+"px";
   lozenge.style.left = $('#xStart').val()+"px";
@@ -43,6 +43,16 @@ $(document).on('mouseup', '.slot', ( (e)->
   lozenge.className = "lozenge";
   lozenge.style.position = "absolute";
 
+
+  xicon = document.createElement('img');
+
+  xicon.src = "/assets/x.png";
+  xicon.style.height = "10px";
+  xicon.style.width = "10px";
+  xicon.className = "close-x-icon";
+  lozenge.appendChild(xicon);
+
+  xicon.onclick = (() -> $("#"+lozenge.id).fadeOut('slow', () -> $("#"+lozenge.id).remove()); )
 
 
   $('#calendar').append(lozenge);
