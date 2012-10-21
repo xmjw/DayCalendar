@@ -2,29 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+*{
+  font-family: arial;
+}
+
 #calendar{
   float: left;
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  width: 740px;
+  width: 750px;
   cursor: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.monday { background-color: rgba(120, 197, 99, 0.53); border-top: solid 1px #78C563;}
+.monday { background-color: rgba(76, 103, 255, 0.51); border-top: solid 1px #679bcd;}
 .tuesday { background-color: rgba(130, 201, 255, 0.49) ; border-top: solid 1px #82c9ff;}
-.wednesday { background-color: rgba(120, 197, 99, 0.53) ; border-top: solid 1px #78C563;}
+.wednesday { background-color: rgba(76, 103, 255, 0.51) ; border-top: solid 1px #679bcd;}
 .thursday { background-color: rgba(130, 201, 255, 0.49) ; border-top: solid 1px #82c9ff;}
-.friday { background-color: rgba(120, 197, 99, 0.53) ; border-top: solid 1px #78C563;}
-.saturday { background-color: rgba(88, 88, 88, 0.49) ; border-top: solid 1px #000000;}
-.sunday { background-color:rgba(88, 88, 88, 0.49) ; border-top: solid 1px #000000;}
+.friday { background-color:  rgba(76, 103, 255, 0.51)  ; border-top: solid 1px #679bcd;}
+.saturday { background-color: rgba(126, 126, 126, 0.48); border-top: solid 1px #1f1f1f;}
+.sunday { background-color:rgba(126, 126, 126, 0.48) ; border-top: solid 1px #1f1f1f;}
 
 .title {
   float: left;
-  height: 50px;
+  height: 35px;
   width: 100px;
   border-top: none;
+  text-align: center;
+  padding-top: 15px
 }
 .slot {
   float: left;
@@ -32,7 +40,14 @@
   width: 100px;
 
 }
-
 .rail {
   width: 40px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.lozenge {
+  border: 1px solid #ff33aa;
+  background-color: rgba(240, 51, 170, 0.48);
+  border-radius: 6px;
 }

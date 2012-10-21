@@ -1,28 +1,29 @@
 <h1>Day Calendar</h1>
 
 <div id="calendar">
-
-
   <div class="title rail">Time</div>
   <% DayHelper::DayNames.each do |d| %>
     <div class="<%= d.downcase %> title"><%= d %></div>
   <% end %>
-
   <% (0..12).to_a.each do |i| %>
-
     <div class="slot rail"><%= i+7 %>:00</div>
     <% DayHelper::DayNames.each do |d| %>
-
-
       <div class="slot <%= d.downcase %>"></div>
-
     <% end %>
-
   <% end %>
-
 </div>
 
 <input type="hidden" value="0" id="xStart"/>
 <input type="hidden" value="0" id="yStart"/>
 <input type="hidden" value="0" id="xEnd"/>
 <input type="hidden" value="0" id="yEnd"/>
+
+<h2>Instructions</h2>
+<p>
+  Click and drag a region of the calendar to create a time block. You can only do positive x/y regions... It's just a
+  demonstrator, so you can probably break it. Also, if you're using Internet Explorer: I am not supporting your browser.
+  Nor am I ever likely too.
+</p>
+<p>
+  You can see the code here: <a href="https://github.com/xmjw/DayCalendar">https://github.com/xmjw/DayCalendar</a>
+</p>

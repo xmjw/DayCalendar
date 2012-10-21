@@ -17,7 +17,6 @@ $(document).on('mousedown', '.slot', ( (e)->
   console.log("Click Position: "+e.pageX+"x"+e.pageY );
   console.log("Start Position: "+$('#xStart').val()+"x"+$('#yStart').val() );
 
-  start.innerText = 'start';
 
 ));
 
@@ -29,10 +28,8 @@ $(document).on('mouseup', '.slot', ( (e)->
 
   start = document.elementFromPoint(e.pageX,e.pageY);
 
-  start.innerText = 'end';
-
-  h = (start.offsetTop-$('#yStart').val()) + 25;
-  w = (start.offsetLeft-$('#xStart').val()) + 98;
+  h = (start.offsetTop-$('#yStart').val()) + 23;
+  w = (start.offsetLeft-$('#xStart').val()) + 97;
 
   console.log("Trying to create a box with dimensions (x/y) "+w+"x"+h);
   console.log("Trying to create a box with start position (x/y) "+$('#xStart').val()+"x"+$('#yStart').val())
@@ -43,13 +40,10 @@ $(document).on('mouseup', '.slot', ( (e)->
   lozenge.style.width = w+"px";
   lozenge.style.left = $('#xStart').val()+"px";
   lozenge.style.top = $('#yStart').val()+"px";
-  lozenge.style.backgroundColor = "#FF33AA";
+  lozenge.className = "lozenge";
   lozenge.style.position = "absolute";
 
 
 
   $('#calendar').append(lozenge);
-
-
-
 ));
