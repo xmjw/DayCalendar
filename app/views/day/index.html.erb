@@ -11,6 +11,7 @@
     <div class="slot rail"><%= i+7 %>:00</div>
     <% DayHelper::DayNames.each do |d| %>
       <div class="slot <%= d.downcase %>"></div>
+      <div class="control-slot"></div>
     <% end %>
   <% end %>
 </div>

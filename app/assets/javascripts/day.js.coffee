@@ -49,3 +49,9 @@ $(document).on('mouseup', '.slot', ( (e)->
   console.log("Finished trying to do AJAXy Sugar")
 ));
 
+$(document).ready(() ->
+  $(".control-slot").first(() ->
+
+  )
+);
+

@@ -26,6 +26,7 @@
 .saturday { background-color: rgba(126, 126, 126, 0.48); border-top: solid 1px #1f1f1f;}
 .sunday { background-color:rgba(126, 126, 126, 0.48) ; border-top: solid 1px #1f1f1f;}
 
+
 .title {
   float: left;
   height: 35px;
@@ -34,11 +35,24 @@
   text-align: center;
   padding-top: 15px
 }
+
+.control-slot{
+  float:left;
+  height: 25px;
+  width:100px;
+  z-index:10;
+  background-color: pink;
+  position: relative;
+  overflow: scroll;
+  display: none;
+}
+
 .slot {
   float: left;
   height: 25px;
   width: 100px;
-
+  z-index: 0;
+  baclground-color: transparent;
 }
 .rail {
   width: 40px;
@@ -48,6 +62,7 @@
 
 .lozenge {
   border: 1px solid #ff33aa;
+  z-index: 5;
   background-color: rgba(240, 51, 170, 0.48);
   border-radius: 6px;
 
