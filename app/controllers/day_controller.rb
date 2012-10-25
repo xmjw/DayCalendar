@@ -7,8 +7,13 @@ class DayController < ApplicationController
 
   def new
 
-    @entry = "some crap"
+    blob = session[:blobs]
 
+    blob = {:s => params[:s]} unless blob != nil
+
+    puts blob
+
+    session[:blobs] = blob
 
     respond_to do |format|
       format.js

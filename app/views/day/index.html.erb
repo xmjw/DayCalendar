@@ -9,10 +9,16 @@
   <% DayHelper::DayNames.each do |d| %>
     <div class="<%= d.downcase %> title"><%= d %></div>
   <% end %>
-  <% (0..12).to_a.each do |i| %>
-    <div class="slot rail"><%= i+7 %>:00</div>
+  <% (0..24).to_a.each do |i| %>
+    <div class="slot rail">
+      <%= i/2+7 %>:<%= if i%2 == 0
+                          "00"
+                        else
+                          "30"
+                        end %>
+    </div>
     <% DayHelper::DayNames.each do |d| %>
-      <div class="slot <%= d.downcase %>"></div>
+      <div id="<%= d.downcase+"-"+i.to_s %>" class="slot <%= d.downcase %>"></div>
     <% end %>
   <% end %>
 </div>
@@ -26,7 +32,7 @@
 <p>
   Click and drag a region of the calendar to create a time block. You can only do positive x/y regions... It's just a
   demonstrator, so you can probably break it. Also, if you're using Internet Explorer: I am not supporting your browser.
-  Nor am I ever likely too.
+  Nor am I ever likely to.
 </p>
 <p>
   Clicking on the <img src="/assets/x.png" alt="x icon"/> will delete the time entry.

@@ -3,24 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 
-
-
-$(document).on('mousedown', '.slot', ( (e)->
-
-
-  start = document.elementFromPoint(e.pageX,e.pageY);
-
-  $('#xStart').val(start.offsetLeft+2);
-  $('#yStart').val(start.offsetTop+2);
-
-
-  console.log("Click Position: "+e.pageX+"x"+e.pageY );
-  console.log("Start Position: "+$('#xStart').val()+"x"+$('#yStart').val() );
-
-
-));
-
-
 processData = (d, textStatus, jqXHR) ->
   script = $(d).text();
   alert (script);
@@ -31,21 +13,26 @@ processData = (d, textStatus, jqXHR) ->
 failedData = (d) ->
   alert(d)
 
+$(document).on('mousedown', '.slot', ( (e)->
+  start = $(document.elementFromPoint(e.pageX,e.pageY));
+
+  if ($(start).hasClass('lozenge'))
+    start = $(start).parent();
+
+  console.log("Click start was on: "+$(start).attr('id'));
+  $('#xStart').val($(start).attr('id'))
+  false
+));
+
 $(document).on('mouseup', '.slot', ( (e)->
-  $('#xEnd').val(e.pageX);
-  $('#yEnd').val(e.pageY);
+  end = document.elementFromPoint(e.pageX,e.pageY);
 
-  console.log("End Position: "+$('#xEnd').val()+"x"+$('#yEnd').val() )
+  if ($(end).hasClass('lozenge'))
+    end = $(end).parent()
 
-  start = document.elementFromPoint(e.pageX,e.pageY);
-
-  h = (start.offsetTop-$('#yStart').val()) + 23;
-  w = (start.offsetLeft-$('#xStart').val()) + 97;
-
-  console.log("Making Ajax Request")
-
-  $.post('/day/entry.js', {h: h, w: w, l: $('#xStart').val(), t: $('#yStart').val()}, success: processData, error: failedData );
-
-  console.log("Finished trying to do AJAXy Sugar")
+  start = $('#xStart').val()
+  console.log("Click end was on: "+$(end).attr('id'));
+  $.post('/day/entry.js', {s: start, e: $(end).attr('id')}, success: processData, error: failedData );
+  false
 ));
 
