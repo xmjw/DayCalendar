@@ -2,6 +2,8 @@
 
 <p>Sorry, but this is totally non-accessible. That's going to be a challenge.</p>
 
+<% slotId = 0 %>
+
 <div id="calendar">
   <div class="title rail">Time</div>
   <% DayHelper::DayNames.each do |d| %>
@@ -10,8 +12,9 @@
   <% (0..12).to_a.each do |i| %>
     <div class="slot rail"><%= i+7 %>:00</div>
     <% DayHelper::DayNames.each do |d| %>
-      <div class="slot <%= d.downcase %>"></div>
-      <div class="control-slot"></div>
+      <div id="slot<%= slotId %>x" class="slot <%= d.downcase %>"></div>
+      <div id="slot<%= slotId %>" class="control-slot"></div>
+      <% slotId+=1 %>
     <% end %>
   <% end %>
 </div>
