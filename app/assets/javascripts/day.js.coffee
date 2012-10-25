@@ -5,7 +5,7 @@
 
 
 
-$(document).on('mousedown', '.control-slot', ( (e)->
+$(document).on('mousedown', '.slot', ( (e)->
 
 
   start = document.elementFromPoint(e.pageX,e.pageY);
@@ -31,7 +31,7 @@ processData = (d, textStatus, jqXHR) ->
 failedData = (d) ->
   alert(d)
 
-$(document).on('mouseup', '.control-slot', ( (e)->
+$(document).on('mouseup', '.slot', ( (e)->
   $('#xEnd').val(e.pageX);
   $('#yEnd').val(e.pageY);
 
@@ -48,18 +48,4 @@ $(document).on('mouseup', '.control-slot', ( (e)->
 
   console.log("Finished trying to do AJAXy Sugar")
 ));
-
-$(document).ready(() ->
-  $(".control-slot").each(() ->
-    slot = $("#"+$(this).attr("id")+"x")
-
-    $(this).css({
-      "left": slot.position().left
-      "top": slot.position().top
-      "position": "absolute"
-      "width": "100"
-      "display": "block"
-    });
-  )
-);
 

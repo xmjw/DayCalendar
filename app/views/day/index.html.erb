@@ -12,9 +12,7 @@
   <% (0..12).to_a.each do |i| %>
     <div class="slot rail"><%= i+7 %>:00</div>
     <% DayHelper::DayNames.each do |d| %>
-      <div id="slot<%= slotId %>x" class="slot <%= d.downcase %>"></div>
-      <div id="slot<%= slotId %>" class="control-slot"></div>
-      <% slotId+=1 %>
+      <div class="slot <%= d.downcase %>"></div>
     <% end %>
   <% end %>
 </div>
