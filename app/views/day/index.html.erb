@@ -7,7 +7,7 @@
 <div id="calendar">
   <div class="title rail">Time</div>
   <% DayHelper::DayNames.each do |d| %>
-    <div class="<%= d.downcase %> title"><%= d %></div>
+    <div class="<%= d %> title"><%= d %></div>
   <% end %>
   <% (0..24).to_a.each do |i| %>
     <div class="slot rail">
@@ -18,7 +18,7 @@
                         end %>
     </div>
     <% DayHelper::DayNames.each do |d| %>
-      <div id="<%= d.downcase+"-"+i.to_s %>" class="slot <%= d.downcase %>"></div>
+      <div id="<%= d.downcase+i.to_s %>" class="slot <%= d.downcase %>"></div>
     <% end %>
   <% end %>
 </div>

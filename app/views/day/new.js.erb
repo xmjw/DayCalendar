@@ -1,1 +1,4 @@
-$("#<%= params[:s]%>").append('<%= j render('entry') %>')
+
+<% @model.each_pair do |k,v| %>
+$("#<%= k %>").append('<%= j render :partial => 'entry', :locals => {:v => v} %>')
+<% end %>

@@ -22,6 +22,16 @@ end
 
 gem 'jquery-rails'
 
+group :test do
+    gem "minitest"
+    gem "minitest-reporters", '>= 0.5.0'
+end
+
+group :development do
+  gem 'quiet_assets'
+end
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
