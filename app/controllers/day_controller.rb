@@ -10,22 +10,17 @@ class DayController < ApplicationController
     current = session[:current]
     
     @pops = {}
-    
-    @model.each_pair do |k,v|
-      if current.key? k
+    @kill = []
+    current.each_pair do |k,v|
+      if @model.key? k
         #We have to handle the collision...
         puts k+" - is an overlap. Something must be done."
-        
-        pops = pops.merge calculate_css_removal current, k, v
-        
+        @pops = @pops.merge calculate_css_removal current, k, v
+        @kill << k
       end
     end
 
     session[:current] = current.merge @model
-    
-    puts @model
-    puts current
-    puts session[:current]
 
     respond_to do |format|
       format.js
@@ -38,6 +33,8 @@ class DayController < ApplicationController
     # k tells us which siblings to seek.
     # current is the set of things we can check against.
 
+    removeCss = {}
+
     #get the time numeral
     hourIndex = (/[\d]+/.match key)[0].to_i
 
@@ -46,16 +43,23 @@ class DayController < ApplicationController
 
     if css.include? "lo"
       #Remove 'ro' from element to the left
+      removeCss[DayHelper::DayNames[dayIndex-1].downcase+hourIndex.to_s] = "ro"
     end
     if css.include? "ro"
       #Remove 'lo' from element to the right
+      index = dayIndex+1
+      index = 0 if index == 7
+      removeCss[DayHelper::DayNames[index].downcase+hourIndex.to_s] = "lo"
     end
     if css.include? "to"
       #Remove 'bo' from element above
+      removeCss[DayHelper::DayNames[dayIndex].downcase+(hourIndex-1).to_s] = "bo"
     end
     if css.include? "bo"
       #Remove 'to' from element below
+      removeCss[DayHelper::DayNames[dayIndex].downcase+(hourIndex+1).to_s] = "to"
     end
+    removeCss
   end
 
   def calculate_slots start, finish

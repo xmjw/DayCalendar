@@ -1,4 +1,9 @@
-
+<% @pops.each_pair do |k,v| %>
+$("#<%= k %>").children().removeClass("<%= v %>")
+<% end %>
+<% @kill.each do |k| %>
+$("#<%= k %>").children().remove()
+<% end %>
 <% @model.each_pair do |k,v| %>
 $("#<%= k %>").append('<%= j render :partial => 'entry', :locals => {:v => v} %>')
 <% end %>

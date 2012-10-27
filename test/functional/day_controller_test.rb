@@ -8,8 +8,6 @@ class DayControllerTest < ActionController::TestCase
     #act
     slot_list = DayController.new.calculate_slots "tuesday12", "wednesday15"
     #assert
-    puts slot_list
-
     assert(slot_list == expected,"Expected Output does not match actual")
   end
   test "assigns css classes to a surrounded square" do
@@ -142,7 +140,6 @@ class DayControllerTest < ActionController::TestCase
     #Assert
     assert result == {"tuesday1" => "bo"}, "Calculated CSS Removal was incorrect."
   end
-  
   test "correctly identifies element below to have 'to' class removed" do
     #Arrange
     lozenges = {"tuesday1" => "bo", "tuesday2" => "to"}
@@ -153,7 +150,6 @@ class DayControllerTest < ActionController::TestCase
     #Assert
     assert result == {"tuesday2" => "to"}, "Calculated CSS Removal was incorrect."
   end
-  
   test "correctly identifies element left to have 'ro' class removed" do
     #Arrange
     lozenges = {"friday3" => "ro", "saturday3" => "lo"}
@@ -164,7 +160,6 @@ class DayControllerTest < ActionController::TestCase
     #Assert
     assert result == {"friday3" => "ro"}, "Calculated CSS Removal was incorrect."
   end
-  
   test "correctly identifies element right to have 'lo' class removed" do
     #Arrange
     lozenges = {"tuesday1" => "ro", "wednesday1" => "lo"}
@@ -175,5 +170,24 @@ class DayControllerTest < ActionController::TestCase
     #Assert
     assert result == {"wednesday1" => "lo"}, "Calculated CSS Removal was incorrect."
   end
-  
+  test "correctly identifies elements either side to have 'lo' and 'ro' classes removed" do
+    #Arrange
+    lozenges = {"tuesday1" => "ro", "wednesday1" => "lo ro", "thursday1" => "lo"}
+    toRemove = "wednesday1"
+    toRemoveCSS = "lo ro"
+    #Act
+    result = DayController.new.calculate_css_removal lozenges, toRemove, toRemoveCSS
+    #Assert
+    assert result == {"tuesday1" => "ro", "thursday1" => "lo"}, "Calculated CSS Removal was incorrect."
+  end
+  test "correctly identifies elements above and below to have 'lo' and 'ro' classes removed" do
+    #Arrange
+    lozenges = {"tuesday1" => "bo", "tuesday2" => "to bo", "tuesday3" => "to"}
+    toRemove = "tuesday2"
+    toRemoveCSS = "to bo"
+    #Act
+    result = DayController.new.calculate_css_removal lozenges, toRemove, toRemoveCSS
+    #Assert
+    assert result == {"tuesday1" => "bo", "tuesday3" => "to"}, "Calculated CSS Removal was incorrect."
+  end
 end
