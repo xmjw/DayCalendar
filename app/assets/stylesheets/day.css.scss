@@ -4,13 +4,14 @@
 
 $calendarWidth: 760px;
 $slotWidth: 100px;
-$slotHeight: 25px;
+$slotHeight: 12px;
 $titleHeight: 35px;
 $railWidth: 50px;
+$railHeight: 24px;
 $railPadding: 10px;
 
 $lozengeWidth: 98px;
-$lozengeHeight: 23px;
+$lozengeHeight: 11px;
 
 *{
   font-family: arial;
@@ -54,6 +55,7 @@ $lozengeHeight: 23px;
 }
 .rail {
   width: $railWidth;
+  height: $railHeight;
   text-align: right;
   padding-right: $railPadding;
 }

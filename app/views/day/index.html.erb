@@ -10,13 +10,11 @@
     <div class="<%= d %> title"><%= d %></div>
   <% end %>
   <% (0..24).to_a.each do |i| %>
-    <div class="slot rail">
-      <%= i/2+7 %>:<%= if i%2 == 0
-                          "00"
-                        else
-                          "30"
-                        end %>
-    </div>
+    <% if i%2 == 0 %>
+      <div class="slot rail">
+      <%= i/2+7 %>:00
+      </div>
+	<% end %>
     <% DayHelper::DayNames.each do |d| %>
       <div id="<%= d.downcase+i.to_s %>" class="slot <%= d.downcase %>"></div>
     <% end %>
