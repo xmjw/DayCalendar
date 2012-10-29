@@ -32,7 +32,7 @@ $(document).on('mouseup', '.slot', ( (e)->
 
   start = $('#xStart').val()
   console.log("Click end was on: "+$(end).attr('id'));
-  $.post('/day/entry.js', {s: start, e: $(end).attr('id')}, success: processData, error: failedData );
+  $.post('/day/entry.js', {s: start, e: $(end).attr('id'), week: $('#week').val()}, success: processData, error: failedData );
   false
 ));
 

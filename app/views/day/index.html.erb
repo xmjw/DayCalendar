@@ -1,10 +1,11 @@
-<h1>Day Calendar</h1>
+<h1>Week <%= @week %></h1>
 
 <p>Sorry, but this is totally non-accessible. That's going to be a challenge.</p>
 
 <% slotId = 0 %>
 
 <div id="calendar">
+  <input type="hidden" value="<%= @week %>" id="week"/>
   <div class="title rail">Time</div>
   <% DayHelper::DayNames.each do |d| %>
     <div class="<%= d %> title"><%= d %></div>

@@ -1,11 +1,28 @@
 class DayController < ApplicationController
   def index
-    session[:current] = {}
+    @week = params[:week]
+    @week = Date.today.cweek if @week == nil
   end
 
   #AJAX Action for creating a new lozenge in the calendar.
   def new
+    week = params[:week]
+    
+    #This isn't quite right... because we shoud be using some sort of unique on this.
+    entry = Entry.find_by_week week
+    
     @model = calculate_slots params[:s], params[:e]
+
+    @model.each_pair do |k,v|
+      LozengeEntry.create({:entry_id => entry.id, 
+                           :color    => "#4fff51", 
+                           :slot     => k, 
+                           :day      => k, 
+                           :lo       => v.include?("lo"), 
+                           :ro       => v.include?("ro"), 
+                           :bo       => v.include?("bo"), 
+                           :to       => v.include?("to")})
+    end
 
     current = session[:current]
     

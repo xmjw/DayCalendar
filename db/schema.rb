@@ -11,6 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20121029223810) do
+
+  create_table "entries", :force => true do |t|
+    t.integer  "week"
+    t.integer  "user_id"
+    t.integer  "year"
+    t.decimal  "hours"
+    t.integer  "activity_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "lozenge_entries", :force => true do |t|
+    t.integer  "entry_id"
+    t.string   "color"
+    t.integer  "slot"
+    t.integer  "day"
+    t.boolean  "lo"
+    t.boolean  "ro"
+    t.boolean  "bo"
+    t.boolean  "to"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  entry_id: 1
+  color: MyString
+  slot: 1
+  day: 1
+  lo: false
+  ro: false
+  bo: false
+  to: false
+
+two:
+  entry_id: 1
+  color: MyString
+  slot: 1
+  day: 1
+  lo: false
+  ro: false
+  bo: false
+  to: false
