@@ -13,7 +13,7 @@ processData = (d, textStatus, jqXHR) ->
 failedData = (d) ->
   alert(d)
 
-$(document).on('mousedown', '.slot', ( (e)->
+onDown = ( (e)->
   start = $(document.elementFromPoint(e.pageX,e.pageY));
 
   if ($(start).hasClass('lozenge'))
@@ -22,9 +22,9 @@ $(document).on('mousedown', '.slot', ( (e)->
   console.log("Click start was on: "+$(start).attr('id'));
   $('#xStart').val($(start).attr('id'))
   false
-));
+)
 
-$(document).on('mouseup', '.slot', ( (e)->
+onUp = ( (e)->
   end = document.elementFromPoint(e.pageX,e.pageY);
 
   if ($(end).hasClass('lozenge'))
@@ -34,5 +34,11 @@ $(document).on('mouseup', '.slot', ( (e)->
   console.log("Click end was on: "+$(end).attr('id'));
   $.post('/day/entry.js', {s: start, e: $(end).attr('id')}, success: processData, error: failedData );
   false
-));
+)
+
+$(document).on('mousedown', '.slot', onDown);
+$(document).on('touchstart', '.slot', onDown);
+
+$(document).on('mouseup', '.slot', onUp);
+$(document).on('touchend', '.slot', onUp);
 
