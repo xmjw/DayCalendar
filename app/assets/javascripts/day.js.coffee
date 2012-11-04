@@ -14,7 +14,8 @@ failedData = (d) ->
   alert(d)
 
 onDown = ( (e)->
-  start = $(document.elementFromPoint(e.pageX,e.pageY));
+
+  start = e.target;
 
   if ($(start).hasClass('lozenge'))
     start = $(start).parent();
@@ -25,7 +26,7 @@ onDown = ( (e)->
 )
 
 onUp = ( (e)->
-  end = document.elementFromPoint(e.pageX,e.pageY);
+  end = e.target;
 
   if ($(end).hasClass('lozenge'))
     end = $(end).parent()
